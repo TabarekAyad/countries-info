@@ -45,6 +45,13 @@ const AllCountries = () => {
             <div className="country__img">
               <img src={country.flags.png} alt="country flag" />
             </div>
+
+            <div className="country__data">
+              <h3>{country.name.common}</h3>
+              <h6>Population: {country.population}</h6>
+              <h6>Region: {country.region}</h6>
+              <h6>Capitol: {country.capital}</h6>
+            </div>
           </div>
         ))
       }

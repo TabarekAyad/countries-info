@@ -38,7 +38,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     column-gap: 2rem;
-    row-gap: 2rem;;
+    row-gap: 2rem;
 }
 
 .country__card{
@@ -54,12 +54,12 @@ body{
     border-radius: 5px 5px 0px 0px;
 }
 
-.all__country_wrapper{
+.all__country__wrapper{
     margin-top: 100px;
 }
 
 .country__data{
-    padding: 2opx;
+    padding: 20px;
 }
 
 .country__data h3{
@@ -72,5 +72,25 @@ body{
     margin-bottom: 10px;
     font-weight: 400;
     opacity: 80%;
+}
+
+.country__bottom h4{
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+}
+
+input{
+    padding: 10px 25px;
+    color: #fff;
+    border-radius: 5px;
+    background: hsl(209, 23%, 22%);
+    border: none;
+    outline: none;
+    margin-bottom: 50px;
+}
+
+::placeholder{
+    color:#fff;
 }
 

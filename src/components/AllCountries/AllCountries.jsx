@@ -2,6 +2,9 @@ import React, { useState, useEffect} from 'react'
 import { apiURL } from '../util/api'
 
 import SearchInput from '../Search/SearchInput'
+import FilterCountry from '../FilterCountry/FilterCountry'
+
+import Link from 'react-router-dom'
 
 const AllCountries = () => {
 
@@ -47,6 +50,24 @@ const AllCountries = () => {
       }
     }
 
+    const getCountryByRegion = async(regionName)=>{
+      try{
+        const res = await fetch(`${apiURL}/region/${regionName}`)
+
+        if(!res.ok) throw new Error('Request failed')
+
+        const data = await res.json();
+        setCountries(data)
+
+        setIsLoading(false)
+
+      } catch(error){
+        setIsLoading(false)
+        setError(false)
+
+      }
+    }
+
     useEffect(()=>{
       getAllCountries()
     }, [])
@@ -57,6 +78,9 @@ const AllCountries = () => {
       <div className="search">
         <SearchInput onSearch={getCountryByName} />
       </div>
+      <div className="filter">
+        <FilterCountry onSelect={getCountryByRegion}/>
+      </div>
     </div>
     <div className="country__bottom">
       {isLoading && !error && <h4>Loading...</h4>}
@@ -64,6 +88,7 @@ const AllCountries = () => {
 
       {
         countries?.map(country=>(
+        <Link to={`/country/${country.name.common}`}>
           <div className="country__card">
             <div className="country__img">
               <img src={country.flags.png} alt="country flag" />
@@ -76,6 +101,7 @@ const AllCountries = () => {
               <h6>Capitol: {country.capital}</h6>
             </div>
           </div>
+        </Link>
         ))
       }
     </div>

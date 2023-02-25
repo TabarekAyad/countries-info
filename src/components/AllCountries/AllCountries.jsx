@@ -4,7 +4,7 @@ import { apiURL } from '../util/api'
 import SearchInput from '../Search/SearchInput'
 import FilterCountry from '../FilterCountry/FilterCountry'
 
-import Link from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const AllCountries = () => {
 
@@ -96,9 +96,9 @@ const AllCountries = () => {
 
             <div className="country__data">
               <h3>{country.name.common}</h3>
-              <h6>Population: {country.population}</h6>
+              <h6>Population: {new Intl.NumberFormat().format(country.population)}</h6>
               <h6>Region: {country.region}</h6>
-              <h6>Capitol: {country.capital}</h6>
+              <h6>Capital: {country.capital}</h6>
             </div>
           </div>
         </Link>
